@@ -1,0 +1,14 @@
+{
+  "name": "volumes-spike",
+  "owner": { "name": "Codelia Studios" },
+  "metadata": {
+    "description": "Throwaway marketplace for the Volumes Parity Project spike (tests T1-T7). Delete after the spike."
+  },
+  "plugins": [
+    {
+      "name": "volumes-engine-spike",
+      "source": "./plugins/volumes-engine-spike",
+      "description": "Probes that show which plugin parts load and run in a Claude Code Project's cloud threads."
+    }
+  ]
+}

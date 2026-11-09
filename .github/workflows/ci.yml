@@ -1,0 +1,22 @@
+# The spike's stand-in for `verify`: a seconds-long check, so auto-fix has a real CI result to react to.
+# On main, test_multiply fails until a spike-build thread implements multiply. That's expected.
+name: verify
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  verify:
+    name: verify
+    # A public sandbox repo gets GitHub-hosted minutes free. For a private repo, either use a
+    # self-hosted runner label here (for example the light runner) or expect the job to be refused
+    # when the Actions budget is spent.
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Unit tests
+        working-directory: toy
+        run: python3 -m unittest -v

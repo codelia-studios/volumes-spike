@@ -1,0 +1,8 @@
+{
+  "name": "volumes-engine-spike",
+  "displayName": "Volumes engine (spike)",
+  "version": "0.0.1",
+  "description": "Throwaway probes for the Volumes Parity Project spike: do plugin skills, agents, hooks and workflows load and run in a Project's cloud threads?",
+  "author": { "name": "Codelia Studios" },
+  "license": "UNLICENSED"
+}

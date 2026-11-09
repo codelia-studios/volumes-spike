@@ -1,0 +1,38 @@
+# Test T3: GitHub Actions starts a run of a scheduled task that lives in the Project, through its API
+# trigger (/fire). Run it by hand from the Actions tab. It needs two repository secrets, both copied
+# from the scheduled task's API trigger dialog:
+#   SPIKE_FIRE_URL    the full .../routines/trig_.../fire URL
+#   SPIKE_FIRE_TOKEN  the bearer token (sk-ant-oat01-...)
+# The /fire endpoint is in research preview under the beta header below.
+name: fire-project-task
+on:
+  workflow_dispatch:
+    inputs:
+      text:
+        description: Text passed to the run as its fire payload
+        required: false
+        default: "T3 probe: fired from GitHub Actions"
+permissions:
+  contents: read
+jobs:
+  fire:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Fire the project's API-trigger task
+        env:
+          FIRE_URL: ${{ secrets.SPIKE_FIRE_URL }}
+          FIRE_TOKEN: ${{ secrets.SPIKE_FIRE_TOKEN }}
+          TEXT: ${{ inputs.text }}
+        run: |
+          if [ -z "$FIRE_URL" ] || [ -z "$FIRE_TOKEN" ]; then
+            echo "::error::Set the SPIKE_FIRE_URL and SPIKE_FIRE_TOKEN repository secrets first (see RUNBOOK.md, T3)."
+            exit 1
+          fi
+          body=$(python3 -c 'import json,os,datetime; print(json.dumps({"text": os.environ["TEXT"] + " at " + datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")}))')
+          curl --fail-with-body -sS -X POST "$FIRE_URL" \
+            -H "Authorization: Bearer $FIRE_TOKEN" \
+            -H "anthropic-beta: experimental-cc-routine-2026-04-01" \
+            -H "anthropic-version: 2023-06-01" \
+            -H "Content-Type: application/json" \
+            -d "$body"
