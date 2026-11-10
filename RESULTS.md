@@ -5,7 +5,7 @@ the test measures a wake-up. "Choice" is the variant it selects (see RUNBOOK.md)
 
 | Test | Question | Result | Observed | Choice |
 |---|---|---|---|---|
-| T1 | Plugin skills, agents (with pinned models), hooks and workflows load in a cloud thread | Not run yet | Plugin not yet added to the project: the Project settings → Plugins screen is only reachable by the owner in the claude.ai UI, not from a project thread. M1 has not been sent. | Pending |
+| T1 | Plugin skills, agents (with pinned models), hooks and workflows load in a cloud thread | Not run yet | Owner reports the plugin is added in Project settings → Plugins (route not yet written down). This setup thread, started before the add, does not see it: no `spike-*` skills in its skill list, `ListPlugins` empty, `SearchPlugins` finds nothing from this marketplace. That is not a T1 result, since only a fresh thread started after the add counts. M1 not yet sent. | Pending M1 |
 | T2 | A thread's report makes the coordinator act without the owner | | | |
 | T3 | GitHub Actions can start a project thread through `/fire` | | | |
 | T4 | CI and review comments wake the thread that owns the PR; a label starts a fresh reviewer | | | |
