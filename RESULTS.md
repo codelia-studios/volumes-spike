@@ -5,7 +5,7 @@ the test measures a wake-up. "Choice" is the variant it selects (see RUNBOOK.md)
 
 | Test | Question | Result | Observed | Choice |
 |---|---|---|---|---|
-| T1 | Plugin skills, agents (with pinned models), hooks and workflows load in a cloud thread | Not run yet | Owner reports the plugin is added in Project settings → Plugins (route not yet written down). This setup thread, started before the add, does not see it: no `spike-*` skills in its skill list, `ListPlugins` empty, `SearchPlugins` finds nothing from this marketplace. That is not a T1 result, since only a fresh thread started after the add counts. M1 not yet sent. | Pending M1 |
+| T1 | Plugin skills, agents (with pinned models), hooks and workflows load in a cloud thread | Fail: nothing loaded | Plugin added in Project settings → Plugins (04:14Z). Probe thread started 04:19Z after the add: Skill tool returned "Unknown skill" for `volumes-engine-spike:spike-probe`; no plugin skills listed; plugin and skill search for "volumes"/"spike" found nothing; no probe files on disk. Nothing ran, repo unchanged. Agents, hooks and workflow untested because the skill never loaded. | Closest row: plugin can't be installed in a thread, so enable the skills on the claude.ai account instead. Unconfirmed: re-test after re-adding or enabling on the account |
 | T2 | A thread's report makes the coordinator act without the owner | | | |
 | T3 | GitHub Actions can start a project thread through `/fire` | | | |
 | T4 | CI and review comments wake the thread that owns the PR; a label starts a fresh reviewer | | | |
