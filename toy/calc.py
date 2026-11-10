@@ -6,4 +6,4 @@ def add(a, b):
 
 
 def multiply(a, b):
-    raise NotImplementedError("spike-build implements this")
+    return a * b
