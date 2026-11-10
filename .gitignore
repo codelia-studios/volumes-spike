@@ -1,2 +1,4 @@
 .spike/
 __pycache__/
+.claude/repo-probe/
+.DS_Store

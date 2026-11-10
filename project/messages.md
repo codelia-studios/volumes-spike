@@ -30,6 +30,22 @@ runbook says to.
 > the conversation. Did the coordinator post its one-line result on its own,
 > without a message from you? That is T2.)
 
+## M6 · T1c, the repository's own `.claude` (send after removing volumes-android and volumes-ios from Project settings > Environment)
+
+> First update the project instructions. Under "Every thread", replace the line that
+> begins "Begin with the skill your task names" with:
+> "Begin with the skill your task names: an account skill whose name starts with
+> volumes-spike-, or, for T1c, volumes-repo-probe in this repository's .claude/skills.
+> If the skill isn't available, say so in your first message and stop. That is a result."
+> And replace the line "Never touch any repository other than codelia-studios/volumes-spike."
+> with: "Never touch any repository other than codelia-studios/volumes-spike, and never
+> add a repository to the project or to a thread."
+> Tell me whether you could change the instructions yourself.
+>
+> Then start one new thread: run the volumes-repo-probe skill from this repository's
+> .claude/skills on codelia-studios/volumes-spike. If the skill isn't available,
+> report that in your first message and stop.
+
 ## M5 · wrap-up
 
 > List every thread you started in this project, what each reported, and for each

@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "mkdir -p \"$CLAUDE_PROJECT_DIR/.claude/repo-probe\" && date -u +%Y-%m-%dT%H:%M:%SZ >> \"$CLAUDE_PROJECT_DIR/.claude/repo-probe/session-start.log\"",
+            "timeout": 20
+          }
+        ]
+      }
+    ]
+  }
+}

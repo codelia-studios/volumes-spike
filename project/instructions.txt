@@ -1,11 +1,11 @@
 This is a throwaway test project. It measures how Claude Code Projects behave before the Volumes Android port moves onto one. Its only repository is codelia-studios/volumes-spike. Every task is a measurement: follow the named skill exactly, record what happens, fix nothing the skill doesn't ask you to fix.
 
 Every thread
-- Begin with the skill your task names. They are account skills whose names start with volumes-spike-. If the skill isn't available, say so in your first message and stop. That is a result.
+- Begin with the skill your task names: an account skill whose name starts with volumes-spike-, or, for T1c, volumes-repo-probe in this repository's .claude/skills. If the skill isn't available, say so in your first message and stop. That is a result.
 - Branch from main as spike/<name>. Commit and push after every step.
 - Never push main, never force-push, never merge a pull request.
 - Use the GitHub tools or `gh api` (REST). `gh pr` and `gh issue` are expected to fail here.
-- Never touch any repository other than codelia-studios/volumes-spike.
+- Never touch any repository other than codelia-studios/volumes-spike, and never add a repository to the project or to a thread.
 - End with the SPIKE REPORT block the skill gives you.
 
 Coordinator

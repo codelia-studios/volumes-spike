@@ -73,6 +73,29 @@ T1b passes when:
 - Opus and Sonnet subagents report the models asked for;
 - git's pre-commit hook writes `.spike/git-hook.log`.
 
+### T1c · Does the repository's own `.claude` load? (added 2026-11-10)
+
+T1b's thread found three repositories cloned (volumes-spike, volumes-android and,
+judging by its skills, volumes-ios), and it could see their `.claude` agents and
+skills, against the docs.
+
+1. **First, in Project settings > Environment, remove volumes-android and volumes-ios.**
+   Spike threads make deliberate mistakes, and the product repo and the iOS repo
+   (never written to, ADR-026) shouldn't be within reach of them. volumes-ios lives
+   under another GitHub owner, so a thread can't add it back on its own;
+   volumes-android shares this repo's owner, so a thread *can* add it to itself.
+   The new instruction line forbids that.
+2. Send **M6**. The coordinator updates the instructions (that also tells us
+   whether it can), then starts the probe thread.
+3. Read `spike/results/T1c-repo.md` on `spike/t1c-<date>`. Its step 2 lists the
+   cloned repos, which confirms the removal.
+
+| Result | Build this |
+|---|---|
+| Skill, agent (on its pinned model) and hook all load | Keep the pipeline in `volumes-android/.claude` and adapt it in place |
+| Skill and agent load, hook doesn't | Repo skills and agents; formatting through git's own hooks |
+| Nothing loads from the repo | Account skills, as T1b proved |
+
 The original plugin test below is kept for the record.
 
 ### T1 · (original) Does the plugin load and run in a cloud thread?
