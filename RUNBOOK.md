@@ -31,12 +31,19 @@ probably a few dollars of plan usage. Turn the hourly pulse off once T2 is answe
    - Name: `Volumes spike`. Repository: `codelia-studios/volumes-spike`.
    - **Project settings → General:** Coordinator **Opus, low**. Threads **Sonnet, medium**.
    - **Project settings → Memory → Project instructions:** paste `project/instructions.txt`.
-   - **Project settings → Plugins:** add `volumes-engine-spike` from the marketplace
-     in this repo (`codelia-studios/volumes-spike`). **Write down exactly what the
-     Plugins screen offers.** If it can't add a plugin from a GitHub marketplace,
-     that is the first half of T1's answer. Try the routes it does offer (the
-     directory, claude.ai org or personal plugins). Note that claude.ai refuses
-     plugins with a top-level `bin/`; this one has none.
+   - **First put the plugin on your claude.ai account.** Project settings → Plugins
+     only offers plugins your account already has, so it starts empty. Go to
+     **Customize → Plugins** (claude.ai/customize/plugins) → **Add**:
+     - **Add marketplace:** enter `codelia-studios/volumes-spike`. The repo must be
+       pushed. If it's private, connect GitHub and give the Claude GitHub App access.
+       On an organization repo, only an org owner can finish that install.
+     - Or **Upload plugin:** upload `volumes-engine-spike-plugin.zip`, a zip of
+       `plugins/volumes-engine-spike` only.
+
+     claude.ai refuses plugins with a top-level `bin/`; this one has none.
+   - **Then Project settings → Plugins:** enable `volumes-engine-spike`. Plugins
+     reach new threads only. **Write down which route worked**; that's the first
+     half of T1's answer.
    - Environment: the default is fine for the spike.
 5. **Create the three scheduled tasks** in `project/scheduled-tasks.md`, from inside
    the project. Put the API task's URL and token into the repo secrets
