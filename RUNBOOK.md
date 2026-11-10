@@ -55,7 +55,27 @@ probably a few dollars of plan usage. Turn the hourly pulse off once T2 is answe
 
 Record each answer in `RESULTS.md`. Each row says what a pass and a fail decide.
 
-### T1 · Does the plugin load and run in a cloud thread?
+### T1 · Update, 2026-11-10: plugins don't reach project threads yet
+
+The project has no Plugins section, and the account plugin didn't load in a fresh
+thread (T1a: fail). The spike continues on **account skills**:
+
+1. Check **Settings → Capabilities → Code execution and file creation** is on.
+   Skills need it.
+2. In **Customize → Skills**, upload the four zips from `account-skills/`
+   (`volumes-spike-probe`, `-build`, `-review`, `-pulse`), and make sure each is
+   turned on.
+3. Paste the updated `project/instructions.txt` into the project.
+4. Send the new **M1** from `project/messages.md` (T1b).
+
+T1b passes when:
+- the skill loads;
+- Opus and Sonnet subagents report the models asked for;
+- git's pre-commit hook writes `.spike/git-hook.log`.
+
+The original plugin test below is kept for the record.
+
+### T1 · (original) Does the plugin load and run in a cloud thread?
 
 - **Do:** send **M1** (`project/messages.md`). Wait for the thread's SPIKE REPORT,
   then read `spike/results/T1-probe.md` on its branch.

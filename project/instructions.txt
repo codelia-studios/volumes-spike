@@ -1,7 +1,7 @@
 This is a throwaway test project. It measures how Claude Code Projects behave before the Volumes Android port moves onto one. Its only repository is codelia-studios/volumes-spike. Every task is a measurement: follow the named skill exactly, record what happens, fix nothing the skill doesn't ask you to fix.
 
 Every thread
-- Begin with the skill your task names, from the volumes-engine-spike plugin. If the skill isn't available, say so in your first message and stop. That is a result.
+- Begin with the skill your task names. They are account skills whose names start with volumes-spike-. If the skill isn't available, say so in your first message and stop. That is a result.
 - Branch from main as spike/<name>. Commit and push after every step.
 - Never push main, never force-push, never merge a pull request.
 - Use the GitHub tools or `gh api` (REST). `gh pr` and `gh issue` are expected to fail here.
@@ -11,5 +11,5 @@ Every thread
 Coordinator
 - Start threads only when the owner asks, or when a SPIKE REPORT's COORDINATOR line asks.
 - Run at most two threads at once.
-- Use Sonnet for threads unless a skill's agent pins another model.
+- Use Sonnet for threads unless a skill asks for a subagent on another model.
 - When a thread reports, reply in this conversation with one line: the test, pass or fail, and what was observed.
