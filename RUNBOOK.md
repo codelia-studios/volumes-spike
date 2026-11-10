@@ -96,6 +96,32 @@ skills, against the docs.
 | Skill and agent load, hook doesn't | Repo skills and agents; formatting through git's own hooks |
 | Nothing loads from the repo | Account skills, as T1b proved |
 
+### T1d · Can a thread run a workflow from the repository? (added 2026-11-10)
+
+Today every slice runs `.claude/workflows/port-slice.js` in its own cloud session. If a
+project thread can run it, the slice session moves into the project almost unchanged.
+`repo-probe-flow.js` uses the features port-slice.js relies on: `args`, `phase`, `log`,
+`parallel`, repository agent types through `agentType`, `model`, `effort` and `schema`,
+and a repository agent type combined with a schema.
+
+A hint before it runs: locally, volumes-android's workflows show up in the skill list,
+but T1c's thread listed only its two real skills. So the probe tries the workflow by
+name first, then by its file path, then as inline script text, to tell "not found"
+apart from "can't run".
+
+1. Send **M7**. The coordinator generalises the instruction line, then starts the thread.
+2. Watch the thread once. If it shows an approval prompt for the workflow, **don't
+   answer it for a few minutes**. Whether it blocks without you is the result.
+3. Read `spike/results/T1d-workflow.md` on `spike/t1d-<date>`.
+
+| Result | Build this |
+|---|---|
+| Runs by name, no approval, all three agents as asked | The build thread runs port-slice.js as today's slice session does. Adapt the workflow; don't split it |
+| Runs only by file path or inline script | The same, with port-slice started by its path: a one-line change in the skill that starts it |
+| Waits for approval every time | Workflows can't run unattended in threads: each phase becomes its own thread (the Parity Project design) |
+| Repo agent types fail inside the workflow | Agents run as the default workflow agent with an explicit model, and the agent briefs move into the prompts |
+| No Workflow tool in threads | Each phase becomes its own thread |
+
 The original plugin test below is kept for the record.
 
 ### T1 · (original) Does the plugin load and run in a cloud thread?

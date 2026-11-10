@@ -46,6 +46,20 @@ runbook says to.
 > .claude/skills on codelia-studios/volumes-spike. If the skill isn't available,
 > report that in your first message and stop.
 
+## M7 · T1d, a workflow from the repository's `.claude/workflows`
+
+> First update the project instructions. Under "Every thread", replace the line that
+> begins "Begin with the skill your task names" with:
+> "Begin with the skill your task names: an account skill whose name starts with
+> volumes-spike-, or a skill in this repository's .claude/skills that the task names.
+> If the skill isn't available, say so in your first message and stop. That is a result."
+> If you can't change the instructions yourself, say so, and start the thread anyway.
+>
+> Then start one new thread: run the volumes-repo-workflow skill from this
+> repository's .claude/skills on codelia-studios/volumes-spike. It runs the
+> repo-probe-flow workflow; running that workflow is the task. If the skill isn't
+> available, report that in your first message and stop.
+
 ## M5 · wrap-up
 
 > List every thread you started in this project, what each reported, and for each
